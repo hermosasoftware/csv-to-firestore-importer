@@ -1,0 +1,31 @@
+{
+  "name": "csv-to-firestore-importer",
+  "version": "1.0.0",
+  "description": "A solution to import CSV to Firestore",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hermosasoftware/csv-to-firestore-importer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hermosasoftware/csv-to-firestore-importer/issues"
+  },
+  "homepage": "https://github.com/hermosasoftware/csv-to-firestore-importer#readme",
+  "devDependencies": {
+    "@types/csvtojson": "^2.0.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "csvtojson": "^2.0.10",
+    "firebase-admin": "^11.5.0",
+    "fs-extra": "^11.1.0"
+  }
+}
