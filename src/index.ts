@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 import { migrate } from "./utils/firebase";
 require('dotenv').config();
 
-const CREDENTIALS = process.env.CREDENTIALS;
+const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
 
 admin.initializeApp({
   credential: admin.credential.cert(CREDENTIALS),

@@ -16,8 +16,6 @@ export const migrate = async (db) => {
     const file = options.src;
 
     const colRef = db.collection(colPath);
-    const batch = db.batch();
-
     let data;
 
     if (!colPath || !file) return Promise.reject("Missing require data");
@@ -30,13 +28,11 @@ export const migrate = async (db) => {
       return Promise.reject("Unnsuported file or bad file");
     }
 
-    data.forEach((item) => {
+    for (const item of data) {
       const id = options.id ? item[options.id].toStringI() : colRef.doc().id;
       const docRef = colRef.doc(id);
-      batch.set(docRef, item);
-    });
-
-    await batch.commit();
+      docRef.set(item);
+    }
     console.log("Firestore updated. Migration was a success!");
   } catch (error) {
     console.log("Migration failed!", error);
@@ -49,11 +45,10 @@ async function readCSV(path): Promise<any> {
       csv()
         .fromFile(path)
         .then((data) => {
-          console.log(data);
           resolve(data);
         });
     } catch (error) {
-      reject(error)
+      reject(error);
     }
   });
 }
